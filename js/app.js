@@ -1,37 +1,42 @@
 'use strict';
-let dropOptions = [];
-function Animal(animal) {
-  this.img_url = animal.image_url;
-  this.title = animal.title;
-  this.description = animal.description;
-  this.keyword = animal.keyword;
-  this.horns = animal.horns;
+let animalPages = [];
+let pageKeywords = [];
+function Animal(animal, page) {
+  for (let key in animal) {
+    this[key] = animal[key];
+  }
+  animalPages[page].push(this);
 }
 
-Animal.prototype.render = function () {
-  let $hornClone = $('.photo-template').clone();
-  $('main').append($hornClone);
+// Animal.prototype.render = function () {
+// let $hornClone = $('.photo-template').clone();
+// $('main').append($hornClone);
 
-  $hornClone.find('h2').text(this.title);
-  $hornClone.find('img').attr('src', this.img_url);
-  $hornClone.find('p').text(this.description);
-  $hornClone.attr('class', this.keyword);
-  $hornClone.removeClass('photo-template');
-}
+// $hornClone.find('h2').text(this.title);
+// $hornClone.find('img').attr('src', this.img_url);
+// $hornClone.find('p').text(this.description);
+// $hornClone.attr('class', this.keyword);
+// $hornClone.removeClass('photo-template');
+//   let $template = ('#animalTemplate').html();
+//   let html = Mustache.render($template, this);
+//   return html;
+// }
 
-Animal.readJson = () => {
+Animal.readJson = (filePath, page) => {
+  let dropOptions = [];
   const ajaxSettings = { method: 'get', dataType: 'json' };
-  $.ajax('data/page-1.json', ajaxSettings)
+  $.ajax(filePath, ajaxSettings)
     .then(data => {
       data.forEach(element => {
         if (!dropOptions.includes(element.keyword)) {
           dropOptions.push(element.keyword);
 
+          console.log(element.keyword);
         }
-        let animalObject = new Animal(element);
-        animalObject.render();
+        let animalObject = new Animal(element, page);
+        // animalObject.render();
       });
-      populateDropdown();
+      pageKeywords.push(dropOptions);
     })
 
 }
@@ -48,11 +53,12 @@ function populateDropdown() {
 
 
 
-$(function () {
-  Animal.readJson()
+$(function (index) {
+  Animal.readJson('data/page-1.json', 0);
+  console.log(pageKeywords);
 });
 $('section').toggle(false);
-
+// event listener 
 $('select').on('change', function () {
   $('section').toggle(false);
   let classGrab = $(this).find(':selected').attr('value');
@@ -60,6 +66,7 @@ $('select').on('change', function () {
   $(`.${classGrab}`).toggle();
 });
 
+// populateDropdown();
 // $( "#dataTable tbody" ).on( "click", "tr", function() {
 //  console.log( $( this ).text() );
 // });
