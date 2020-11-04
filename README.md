@@ -2,9 +2,9 @@
 
 Class 301: Feature
 -----|-----------
-Name Of Feature|Display Images
-Estimated Time to Complete|20 Minutes
-Finish Time|TBD
+Name Of Feature: Display Images
+Estimated Time to Complete: 20 Minutes
+Finish Time:
 Actual Time to Complete|TBD
 Name Of Feature|Filter the Images
 Estimated Time to Complete|An Hour
