@@ -1,4 +1,4 @@
-'Use Strict'
+'use strict';
 function Animal(animal) {
   this.img_url = animal.image_url;
   this.title = animal.title;
@@ -8,9 +8,7 @@ function Animal(animal) {
 }
 
 Animal.prototype.render = function () {
-  let $hornClone = $('photo-template').clone();
-
-
+  let $hornClone = $('.photo-template').clone();
   $('main').append($hornClone);
 
   $hornClone.find('h2').text(this.title);
@@ -21,7 +19,7 @@ Animal.prototype.render = function () {
 
 Animal.readJson = () => {
   const ajaxSettings = { method: 'get', dataType: 'json' };
-  $.ajax('data/page-1.json')
+  $.ajax('data/page-1.json', ajaxSettings)
     .then(data => {
       data.forEach(element => {
         let animalObject = new Animal(element);
@@ -29,4 +27,5 @@ Animal.readJson = () => {
       });
     })
 }
+
 $(() => Animal.readJson());
