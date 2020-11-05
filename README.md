@@ -31,5 +31,5 @@
 
 **Name Of Feature:** Sort the images
 **Estimated Time to Complete:** 1 Hour
-**Finish Time:** TBD
-**Actual Time to Complete:** TBD
+**Finish Time:** 8:48pm
+**Actual Time to Complete:** 48 minutes

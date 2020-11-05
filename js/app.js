@@ -1,5 +1,5 @@
 'use strict';
-let animalPages = [[], []];
+let animalPages = [];
 let pageKeywords = [];
 let pageNumber = 0;
 
@@ -8,7 +8,7 @@ function Animal(animal, page) {
     this[key] = animal[key];
   }
   this.page = `page${page}`;
-  animalPages[page].push(this);
+  animalPages.push(this);
 }
 
 Animal.prototype.render = function () {
@@ -46,7 +46,24 @@ $(function (index) {
   Animal.readJson('data/page-1.json', 0);
   Animal.readJson('data/page-2.json', 1);
 });
-// event listener 
+
+//event listener for radio buttons
+//radioValue = $("input[name='gender']:checked").val();
+$('form').on('change', function () {
+  let checkedValue = $("input:checked").val();
+  if (checkedValue === 'title') {
+    console.log('title');
+    animalPages.sort((a, b) => (a.title > b.title) ? 1 : -1)
+
+  }
+  else if (checkedValue === 'horns') {
+    console.log('horns');
+    animalPages.sort((a, b) => (a.horns > b.horns) ? 1 : -1)
+  }
+
+})
+
+// event listener  for dropdown
 $('select').on('change', function () {
   $('section').toggle(false);
   let classGrab = $(this).find(':selected').attr('value');
@@ -54,11 +71,19 @@ $('select').on('change', function () {
   $('main').find(`.page${pageNumber}`).toggle(false);
 });
 
+//event listener for page buttons
 $('button').on('click', function () {
+  $('main').children('section').remove();
+
+  animalPages.forEach(data => {
+    console.log('data: ', data);
+
+    $('main').append(data.render());
+  })
   var optionTag = $('option');
   let buttonChoice = $(this).attr('name');
   $('section').toggle(false);
-  if(buttonChoice === 'page0'){
+  if (buttonChoice === 'page0') {
     pageNumber = 1;
     for (let i = 1; i < optionTag.length; i++) {
       if ($(optionTag[i]).attr('class') === 'page-0') {
@@ -67,7 +92,7 @@ $('button').on('click', function () {
         $(optionTag[i]).toggle(false);
       }
     }
-  }else if (buttonChoice === 'page1') {
+  } else if (buttonChoice === 'page1') {
     pageNumber = 0;
     for (let i = 1; i < optionTag.length; i++) {
       if ($(optionTag[i]).attr('class') === 'page-1') {
@@ -77,4 +102,5 @@ $('button').on('click', function () {
       }
     }
   }
+
 });
