@@ -17,4 +17,19 @@
 **Name Of Feature:** Styling
 **Estimated Time to Complete:** 1 Hour
 **Finish Time:** 833pm
-**Actual Time to Complete:** 30 minutes
+**Actual Time to Complete:** 30 minutes 
+
+**Name Of Feature:** Templating & Pagination
+**Estimated Time to Complete:** 3.5 Hour
+**Finish Time:** 7:46pm
+**Actual Time to Complete:** 5.25 hrs
+
+**Name Of Feature:** Styling with Flexbox
+**Estimated Time to Complete:** 1 Hour
+**Finish Time:** 10 min
+**Actual Time to Complete:** 8:00pm
+
+**Name Of Feature:** Sort the images
+**Estimated Time to Complete:** 1 Hour
+**Finish Time:** 8:48pm
+**Actual Time to Complete:** 48 minutes
