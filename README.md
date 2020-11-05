@@ -26,8 +26,8 @@
 
 **Name Of Feature:** Styling with Flexbox
 **Estimated Time to Complete:** 1 Hour
-**Finish Time:** TBD
-**Actual Time to Complete:** TBD
+**Finish Time:** 10 min
+**Actual Time to Complete:** 8:00pm
 
 **Name Of Feature:** Sort the images
 **Estimated Time to Complete:** 1 Hour
