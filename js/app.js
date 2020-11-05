@@ -13,8 +13,6 @@ function Animal(animal, page) {
 Animal.prototype.render = function () {
   let $template = $('#animalTemplate').html();
   let html = Mustache.render($template, this);
-  $('section').addClass('audrena');
-  console.log(html);
   return html;
 }
 
@@ -32,19 +30,14 @@ Animal.readJson = (filePath, page) => {
       });
       pageKeywords.push(dropOptions);
       populateDropdown(page);
+      $('section').toggle(false);
     });
 
 }
 
 function populateDropdown(page) {
-
-  console.log(page);
   pageKeywords[page].forEach(element => {
-    console.log(element);
     $('select').append(`<option class="page-${page}" value=${element}>${element}</option>)`);
-    /// hide all image sections.
-    //create a custom html datatype.
-    /// once dropdown is selected unHide the objects with the correct keyword.
   });
 }
 
@@ -52,42 +45,37 @@ function populateDropdown(page) {
 
 $(function (index) {
   Animal.readJson('data/page-1.json', 0);
-  Animal.readJson('data/page-2.json', 1)
+  Animal.readJson('data/page-2.json', 1);
 });
-$('section').toggle(false);
 // event listener 
 $('select').on('change', function () {
   $('section').toggle(false);
   let classGrab = $(this).find(':selected').attr('value');
-  console.log('classGrab:', classGrab);
   $(`.${classGrab}`).toggle();
+  $('main').find(`.page${pageNumber}`).toggle(false);
 });
 
 $('button').on('click', function () {
   var optionTag = $('option');
-  console.log(optionTag.length);
-  for (let i = 0; i < optionTag.length; i++) {
-    console.log($(optionTag[i]).attr('class'));
-    debugger;
-    if ($(optionTag[i]).attr('class') === 'page0') {
+  let buttonChoice = $(this).attr('name');
+  $('section').toggle(false);
+  if(buttonChoice === 'page0'){
+    pageNumber = 1;
+    for (let i = 1; i < optionTag.length; i++) {
+      if ($(optionTag[i]).attr('class') === 'page-0') {
+        $(optionTag[i]).toggle(true);
+      } else {
+        $(optionTag[i]).toggle(false);
+      }
+    }
+  }else if (buttonChoice === 'page1') {
+    pageNumber = 0;
+    for (let i = 1; i < optionTag.length; i++) {
+      if ($(optionTag[i]).attr('class') === 'page-1') {
+        $(optionTag[i]).toggle(true);
+      } else {
+        $(optionTag[i]).toggle(false);
+      }
     }
   }
-  // let targetName = $(event.target).attr('name');
-  // if (targetName === 'page0') {
-  //   pageNumber = 0;
-  //   ($('option')).forEach(data => {
-  //     if (data.attr('class') === 'page0') {
-  //       console.log('page0, click');
-  //     }
-  //   });
-  //   console.log(options);
-  // }
-  // else if (targetName === 'page1') {
-  //   pageNumber = 1;
-  // }
 });
-
-
-// $( "#dataTable tbody" ).on( "click", "tr", function() {
-//  console.log( $( this ).text() );
-// });
