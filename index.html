@@ -12,24 +12,29 @@
 <body>
   <header>
     <h1>The Gallery of Horns</h1>
+    <button type="button" name="page0">Page One</button>
+    <button type="button" name="page1">Page Two</button>
     <select>
       <option value="default">Filter by Keyword</option>
     </select>
+
   </header>
   <main>
     <template id="animalTemplate" type="text/x-tmpl-mustache">
-      <h2>{{name}}</h2>
-      <img src={{image_url}} alt="">
-      <p>{{description}}</p>
+      <section>
+        <h2>{{name}}</h2>
+        <img src={{image_url}} alt="">
+        <p>{{description}}</p>
+      </section>
     </template>
     <div>
-      <section class="photo-template">
+      <!-- <section class="photo-template">
         <h2></h2>
         <img src="" alt="">
         <p></p>
-      </section>
+      </section> -->
+    </div>
   </main>
-  </div>
   <footer>
     &copy; 2018 Code Fellows
   </footer>

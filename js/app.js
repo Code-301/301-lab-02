@@ -22,21 +22,22 @@ Animal.readJson = (filePath, page) => {
       data.forEach(element => {
         if (!dropOptions.includes(element.keyword)) {
           dropOptions.push(element.keyword);
-
-          console.log(element.keyword);
         }
         let animalObject = new Animal(element, page);
         $('main').append(animalObject.render());
       });
       pageKeywords.push(dropOptions);
+      populateDropdown(page);
     });
 
 }
 
 function populateDropdown(page) {
+
+  console.log(page);
   pageKeywords[page].forEach(element => {
     console.log(element);
-    $('select').append(`<option value=${element}>${element}</option>)`);
+    $('select').append(`<option class="page-${page}" value=${element}>${element}</option>)`);
     /// hide all image sections.
     //create a custom html datatype.
     /// once dropdown is selected unHide the objects with the correct keyword.
@@ -57,6 +58,8 @@ $('select').on('change', function () {
   console.log('classGrab:', classGrab);
   $(`.${classGrab}`).toggle();
 });
+
+$('button').on('click',)
 
 
 // $( "#dataTable tbody" ).on( "click", "tr", function() {
