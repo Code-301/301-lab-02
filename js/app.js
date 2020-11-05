@@ -1,16 +1,20 @@
 'use strict';
 let animalPages = [[], []];
 let pageKeywords = [];
+let pageNumber = 0;
 function Animal(animal, page) {
   for (let key in animal) {
     this[key] = animal[key];
   }
+  this.page = `page${page}`;
   animalPages[page].push(this);
 }
 
 Animal.prototype.render = function () {
   let $template = $('#animalTemplate').html();
   let html = Mustache.render($template, this);
+  $('section').addClass('audrena');
+  console.log(html);
   return html;
 }
 
@@ -59,7 +63,29 @@ $('select').on('change', function () {
   $(`.${classGrab}`).toggle();
 });
 
-$('button').on('click',)
+$('button').on('click', function () {
+  var optionTag = $('option');
+  console.log(optionTag.length);
+  for (let i = 0; i < optionTag.length; i++) {
+    console.log($(optionTag[i]).attr('class'));
+    debugger;
+    if ($(optionTag[i]).attr('class') === 'page0') {
+    }
+  }
+  // let targetName = $(event.target).attr('name');
+  // if (targetName === 'page0') {
+  //   pageNumber = 0;
+  //   ($('option')).forEach(data => {
+  //     if (data.attr('class') === 'page0') {
+  //       console.log('page0, click');
+  //     }
+  //   });
+  //   console.log(options);
+  // }
+  // else if (targetName === 'page1') {
+  //   pageNumber = 1;
+  // }
+});
 
 
 // $( "#dataTable tbody" ).on( "click", "tr", function() {
