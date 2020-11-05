@@ -2,6 +2,7 @@
 let animalPages = [[], []];
 let pageKeywords = [];
 let pageNumber = 0;
+
 function Animal(animal, page) {
   for (let key in animal) {
     this[key] = animal[key];
@@ -40,8 +41,6 @@ function populateDropdown(page) {
     $('select').append(`<option class="page-${page}" value=${element}>${element}</option>)`);
   });
 }
-
-
 
 $(function (index) {
   Animal.readJson('data/page-1.json', 0);

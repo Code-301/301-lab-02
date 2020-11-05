@@ -17,17 +17,12 @@
 **Name Of Feature:** Styling
 **Estimated Time to Complete:** 1 Hour
 **Finish Time:** 833pm
-**Actual Time to Complete:** 30 minutes
+**Actual Time to Complete:** 30 minutes 
 
-**Name Of Feature:** Pagination
-**Estimated Time to Complete:** 1 Hour
-**Finish Time:** TBD
-**Actual Time to Complete:** TBD
-
-**Name Of Feature:** Templating
-**Estimated Time to Complete:** 1 Hour
-**Finish Time:** TBD
-**Actual Time to Complete:** TBD
+**Name Of Feature:** Templating & Pagination
+**Estimated Time to Complete:** 3.5 Hour
+**Finish Time:** 7:46pm
+**Actual Time to Complete:** 5.25 hrs
 
 **Name Of Feature:** Styling with Flexbox
 **Estimated Time to Complete:** 1 Hour
