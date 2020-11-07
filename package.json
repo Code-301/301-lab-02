@@ -20,5 +20,6 @@
   "homepage": "https://github.com/4a50/301-lab-02#readme",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "devDependencies": {}
 }
