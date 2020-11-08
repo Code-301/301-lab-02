@@ -11,18 +11,18 @@ app.use(express.static('./public'));
 
 //GET route
 
-app.get('/about-us', (request, response) => {
-  response.send('about-us');
-});
+// app.get('/about-us', (request, response) => {
+//   response.send('about-us');
+// });
 
 //api route
-app.get('/routeTester', (request, response) => {
-  response.json('msg: this is what you want');
-});
+// app.get('/routeTester', (request, response) => {
+//   response.json('msg: this is what you want');
+// });
 //Send back files
-app.get('/', (req, res) => {
-  response.sendFile('./public/index.html');
-});
+// app.get('/', (req, res) => {
+//   response.sendFile('./public/index.html');
+// });
 
 app.listen(PORT, () => {
   console.log('Server up on Port 3000'); //Use over 1000 (most use 3000<= arbitrary standard)
